@@ -3,7 +3,7 @@ public class Rol
 {
     public string Nombre { get; set; }
     public bool Habilitado { get; set; }
-    public List<Usuario> UsuariosAsignados { get; set; }
+    public List<Usuario> UsuariosAsignados { get; private set; }
 
     public Rol(string nombre)
     {

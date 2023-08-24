@@ -1,8 +1,8 @@
 namespace Application.Entities;
 public class Administrador : Usuario
 {
-    public List<Rol> RolesExistentes { get; set; }
-    public List<Usuario> UsuariosExistentes { get; protected set; }
+    public List<Rol> RolesExistentes { get; private set; }
+    public List<Usuario> UsuariosExistentes { get; private set; }
 
     public Administrador(string nombre, string contraseña) : base(nombre, contraseña)
     {
