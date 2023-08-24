@@ -10,45 +10,45 @@ public class Administrador : Usuario
         UsuariosExistentes = new List<Usuario>();
     }
 
-    public void CrearRol(string nombre)
+    public void CrearRol(Rol rol)
     {
-        if (!RolesExistentes.Any(x => x.Nombre == nombre))
-            RolesExistentes.Add(new Rol(nombre));
+        if (!RolesExistentes.Any(x => x.Nombre == rol.Nombre))
+            RolesExistentes.Add(rol);
         else
             throw new Exception("Rol existente");
     }
 
-    public void EliminarRol(string nombre)
+    public void EliminarRol(Rol rol)
     {
-        RolesExistentes.RemoveAll(x => x.Nombre == nombre);
+        RolesExistentes.RemoveAll(x => x.Nombre == rol.Nombre);
 
         foreach (Usuario usuario in UsuariosExistentes)
-            usuario.RolesAsignados.RemoveAll(x => x.Nombre == nombre);
+            usuario.RolesAsignados.RemoveAll(x => x.Nombre == rol.Nombre);
     }
 
-    public void CrearUsuario(string nombre, string contraseña)
+    public void CrearUsuario(Usuario usuario)
     {
-        if (!UsuariosExistentes.Any(x => x.Nombre == nombre))
-            UsuariosExistentes.Add(new Operacional(nombre, contraseña));
+        if (!UsuariosExistentes.Any(x => x.Nombre == usuario.Nombre))
+            UsuariosExistentes.Add(new Operacional(usuario.Nombre, usuario.Contraseña));
         else
             throw new Exception("Usuario existente");
     }
 
-    public void HabilitarUsuario(string nombre) => Habilitado = true;
+    public void HabilitarUsuario(Usuario usuario) => usuario.Habilitado = true;
 
-    public void DesabilitarUsuario(string nombre)
+    public void DesabilitarUsuario(Usuario usuario)
     {
-        Usuario usuario = UsuariosExistentes.First(x => x.Nombre == nombre);
-        usuario.Habilitado = false;
+        Usuario usuarioExistente = UsuariosExistentes.First(x => x.Nombre == usuario.Nombre);
+        usuarioExistente.Habilitado = false;
     }
 
     public void AsignarRol(Usuario usuario, Rol rol) => usuario.RolesAsignados.Add(rol);
 
     public void DesasignarRol(Usuario usuario, Rol rol) => usuario.RolesAsignados.Remove(rol);
 
-    public bool IniciarSesion(string usuario, string contraseña)
+    public bool IniciarSesion(Usuario usuario)
     {
-        if (UsuariosExistentes.Any(x => x.Nombre == usuario && x.Contraseña == contraseña && x.Habilitado == true))
+        if (UsuariosExistentes.Any(x => x.Nombre == usuario.Nombre && x.Contraseña == usuario.Contraseña && x.Habilitado == true))
             return true;
         else
             return false;
