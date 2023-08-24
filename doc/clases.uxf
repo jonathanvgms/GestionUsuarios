@@ -1,0 +1,35 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>210</x><y>130</y><w>270</w><h>150</h></coordinates><panel_attributes>&lt;&lt;Abstract&gt;&gt;
+Usuario
+--
+- Id: Guid
+- Nombre: string
+- Contraseña: string
+- Habilitado: bool
+- RolesAsignados: List&lt;Rol&gt;
+--
++ Usuario(string nombre, string contraseña)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>380</y><w>310</w><h>210</h></coordinates><panel_attributes>Administrador
+--
+- RolesExistentes: List&lt;Rol&gt;
+- UsuariosExistentes: List&lt;Usuarios&gt;
+--
++ Administrador(string nombre, string contraseña)
++ CrearRol(string nombre)
++ EliminarRol(string nombre)
++ CrearUsuario(string nombre, string contraseña)
++ HabilitarUsuario(string nombre)
++ DeshabilitarUsuario(string nombre)
++ AsignarRol(Usuario usuario, Rol rol)
++ DeasignarRol(Usuario usuario, Rol rol)
++ IniciarSesion(string nombre, string contraseña)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>380</x><y>380</y><w>310</w><h>190</h></coordinates><panel_attributes>Operacional
+--
+--
++ Operacional(string nombre, string contraseña)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>140</x><y>270</y><w>220</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>200;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>270</y><w>180</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;160;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>600</x><y>130</y><w>220</w><h>120</h></coordinates><panel_attributes>Rol
+--
++ Nombre: string
++ Habilitado: bool
++ UsuariosAsignados: List&lt;Usuario&gt;
+--
++ Rol(string nombre)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>190</y><w>150</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;130;10</additional_attributes></element></diagram>

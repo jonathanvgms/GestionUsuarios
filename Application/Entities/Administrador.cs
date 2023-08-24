@@ -34,7 +34,7 @@ public class Administrador : Usuario
             throw new Exception("Usuario existente");
     }
 
-    public void HabilitarUsuario() => Habilitado = true;
+    public void HabilitarUsuario(string nombre) => Habilitado = true;
 
     public void DesabilitarUsuario(string nombre)
     {
@@ -46,7 +46,7 @@ public class Administrador : Usuario
 
     public void DesasignarRol(Usuario usuario, Rol rol) => usuario.RolesAsignados.Remove(rol);
 
-    public bool Login(string usuario, string contraseña)
+    public bool IniciarSesion(string usuario, string contraseña)
     {
         if (UsuariosExistentes.Any(x => x.Nombre == usuario && x.Contraseña == contraseña && x.Habilitado == true))
             return true;
